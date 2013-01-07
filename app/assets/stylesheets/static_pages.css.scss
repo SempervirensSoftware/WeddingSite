@@ -1,0 +1,21 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$hero_width: 		940px;
+$hero_height:		529px;
+
+#page_wrapper{
+	width:			$hero_width;
+	margin-left:	auto;
+	margin-right:	auto;
+	height: 100%;
+}
+
+.hero{
+	background-image:url("hero_sample.jpg"); 
+	width: 	$hero_width;
+	height: $hero_height;
+}
+
