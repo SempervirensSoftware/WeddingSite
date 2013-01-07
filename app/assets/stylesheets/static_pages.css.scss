@@ -2,9 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "compass/css3/background-clip";
 
 $hero_width: 		940px;
 $hero_height:		529px;
+
+$cut_out_height:	100px;
 
 #page_wrapper{
 	width:			$hero_width;
@@ -13,9 +16,23 @@ $hero_height:		529px;
 	height: 100%;
 }
 
-.hero{
-	background-image:url("hero_sample.jpg"); 
+/////////////////////////////////
+// Hero Syles
+/////////////////////////////////
+
+#hero{
+    margin-top:50px;
+	overflow: hidden;
+
 	width: 	$hero_width;
 	height: $hero_height;
+	
+	font-family: 'Monda', sans-serif;
+	font-size:32px;	
+}
+
+
+.hero_cut_in{
+	color: #FFFFFF;
 }
 
