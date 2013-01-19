@@ -4,10 +4,19 @@
 
 @import "compass/css3/background-clip";
 
+/////////////////////////////////
+// Vars
+
 $hero_width: 		940px;
 $hero_height:		529px;
-
 $cut_out_height:	100px;
+
+/////////////////////////////////
+// Site Syles
+
+.hidden{
+	display: none;
+}
 
 #page_wrapper{
 	width:			$hero_width;
@@ -16,9 +25,22 @@ $cut_out_height:	100px;
 	height: 100%;
 }
 
+#menu {
+    width: 100%;   
+    padding: 0px;  
+    display: inline;
+    text-align: center;
+
+    font-family: 'Monda', sans-serif;
+	font-size:18px;	
+}
+
+#menu a {
+	color:#000000;
+}
+
 /////////////////////////////////
 // Hero Syles
-/////////////////////////////////
 
 #hero{
     margin-top:50px;
@@ -30,7 +52,6 @@ $cut_out_height:	100px;
 	font-family: 'Monda', sans-serif;
 	font-size:32px;	
 }
-
 
 .hero_cut_in{
 	color: #FFFFFF;
