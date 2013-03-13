@@ -1,22 +1,34 @@
-<div id="page_wrapper">
+<div id="pageWrapper">
 	<div id="hero">
 		<canvas id="overlay" width="940" height="46"></canvas>
-		<div class="hero_cut_in"></div>		
+		<div class="heroCutIn"></div>		
 	</div>
 	<div id="menu" class="row-fluid">		
-  		<div class="span3"><a href="#">Event</a></div>
-  		<div class="span3"><a href="#">Lodging</a></div>
-  		<div class="span3"><a href="#">Wedding Party</a></div>
-  		<div class="span3"><a href="#">Around Town</a></div>
+  		<div class="span3"><a href="#" id="event">Event</a></div>
+  		<div class="span3"><a href="#" id="lodging">Lodging</a></div>
+  		<div class="span3"><a href="#" id="party">Wedding Party</a></div>
+  		<div class="span3"><a href="#" id="sf">Around Town</a></div>
 	</div>
 
-	<div id="event_content" class="hidden">
-		<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=fuschia+dell&amp;aq=&amp;sll=37.7577,-122.4376&amp;sspn=0.191632,0.362206&amp;t=v&amp;ie=UTF8&amp;hq=fuschia+dell&amp;hnear=&amp;ll=37.7577,-122.4376&amp;spn=0.191632,0.362206&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=fuschia+dell&amp;aq=&amp;sll=37.7577,-122.4376&amp;sspn=0.191632,0.362206&amp;t=v&amp;ie=UTF8&amp;hq=fuschia+dell&amp;hnear=&amp;ll=37.7577,-122.4376&amp;spn=0.191632,0.362206" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+	<div id="event_content" class="hidden detail">
+		<%= render "event" %>
+	</div>
+	<div id="lodging_content" class="hidden detail">
+		<%= render "lodging" %>
+	</div>
+	<div id="party_content" class="hidden detail">
+		<%= render "party" %>
+	</div>
+	<div id="sf_content" class="hidden detail">
+		<%= render "sf" %>
 	</div>
 
 	<div style="font-family: Monda;">&nbsp;</div>
 
 	<script type="text/javascript">
+		var hero_hidden = false;
+		var selected_id = null;
+
 		// Create the Cut-Out Text
 		$(function(){
 			// Get a handle to our canvas
@@ -41,18 +53,31 @@
 		    "/assets/hero_sample_2.jpg"
 		  ], {duration: 5000, fade: 750});			
 
-
+		// Nav Click Handlers
 		$("a").click(function () {			
-   			$('#hero').animate({				
-				height: 46
-			}, 500, function() {				
-				$("#hero").data('backstretch').pause();
-				$("#hero").css("background-color","#000000");
-				$(".backstretch").fadeOut(100, function(){
-					$("#event_content").removeClass("hidden");	
-				});				
-			});
+			hideHeroImage();
+			var new_id = jQuery(this).attr("id");
+			if (new_id != selected_id) {
+				$(".detail").addClass("hidden");
+				var detail_id = "#" + new_id +"_content";
+				$(detail_id).removeClass("hidden");
+			}
     	});
+
+		function hideHeroImage() {
+			if (this.hero_hidden == undefined || this.hero_hidden == false) {
+				this.hero_hidden = true;
+
+				$('#hero').animate({				
+					height: 46
+				}, 1000, function() {				
+					$("#hero").data('backstretch').pause();
+					$("#hero").css("background-color","#b1b1b1");
+					$(".backstretch").fadeOut(100);				
+				});					
+			}			
+		}
+
 	</script>
 
 </div>
