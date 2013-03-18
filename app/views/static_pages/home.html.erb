@@ -3,12 +3,18 @@
 		<canvas id="overlay" width="940" height="46"></canvas>
 		<div class="heroCutIn"></div>		
 	</div>
-	<div id="menu" class="row-fluid">		
-  		<div class="span3"><a href="#" id="event">Event</a></div>
-  		<div class="span3"><a href="#" id="lodging">Lodging</a></div>
-  		<div class="span3"><a href="#" id="party">Wedding Party</a></div>
-  		<div class="span3"><a href="#" id="sf">Around Town</a></div>
-	</div>
+
+	<br/>
+	<span class="comingSoon"> More details coming soon! </span>
+
+	<!--
+		<div id="menu" class="hidden row-fluid">		
+	  		<div class="span3"><a href="#" id="event">Event</a></div>
+	  		<div class="span3"><a href="#" id="lodging">Lodging</a></div>
+	  		<div class="span3"><a href="#" id="party">Wedding Party</a></div>
+	  		<div class="span3"><a href="#" id="sf">Around Town</a></div>
+		</div> 
+	-->
 
 	<div id="event_content" class="hidden detail">
 		<%= render "event" %>
@@ -49,9 +55,8 @@
 	
 		// Start the hero image rotation
 		$("#hero").backstretch([
-		    "/assets/hero_sample_1.jpg",
-		    "/assets/hero_sample_2.jpg"
-		  ], {duration: 5000, fade: 750});			
+		    "/assets/hero_sample_1.jpg"		   
+		  ]);			
 
 		// Nav Click Handlers
 		$("a").click(function () {			

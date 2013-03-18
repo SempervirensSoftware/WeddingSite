@@ -31,6 +31,7 @@ $colWidth5:			($heroWidth - (4 * $colDividerWidth))/5;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	height: 100%;
+	text-align: center;
 }
 
 #menu {
@@ -45,6 +46,13 @@ $colWidth5:			($heroWidth - (4 * $colDividerWidth))/5;
 
 #menu a {
 	color:#b1b1b1;
+}
+
+.comingSoon {
+	color: #555;
+	text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size:24px;	
 }
 
 /////////////////////////////////
