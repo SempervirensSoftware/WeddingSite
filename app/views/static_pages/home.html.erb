@@ -5,16 +5,14 @@
 	</div>
 
 	<br/>
-	<span class="comingSoon"> More details coming soon! </span>
+	<!-- <span class="comingSoon"> More details coming soon! </span> -->
 
-	<!--
-		<div id="menu" class="hidden row-fluid">		
-	  		<div class="span3"><a href="#" id="event">Event</a></div>
-	  		<div class="span3"><a href="#" id="lodging">Lodging</a></div>
-	  		<div class="span3"><a href="#" id="party">Wedding Party</a></div>
-	  		<div class="span3"><a href="#" id="sf">Around Town</a></div>
-		</div> 
-	-->
+	<div id="menu" class="hidden row-fluid">		
+  		<div class="span3"><a href="#event" id="event">Event</a></div>
+  		<div class="span3"><a href="#lodging" id="lodging">Lodging</a></div>
+  		<div class="span3"><a href="#party" id="party">Wedding Party</a></div>
+  		<div class="span3"><a href="#sf" id="sf">Around Town</a></div>
+	</div> 
 
 	<div id="event_content" class="hidden detail">
 		<%= render "event" %>
@@ -32,14 +30,20 @@
 	<div style="font-family: Monda;">&nbsp;</div>
 
 	<script type="text/javascript">
-		var hero_hidden = false;
-		var selected_id = null;
+		var _heroHidden = false;
+		var _selectedId = null;
 
 		// Create the Cut-Out Text
 		$(function(){
 			// Get a handle to our canvas
 			var canvas = $('#overlay');
 			var ctx = canvas[0].getContext("2d");
+			canvas.click(function (event) {			
+				event.preventDefault();
+				hideContent();
+				history.pushState(null, "home page", "/");
+	    		showHeroImage();
+			});
 
 			// Choose font
 			ctx.font = "36px 'Helvetica'";
@@ -51,6 +55,16 @@
 			// Punch out the text!
 			ctx.globalCompositeOperation = 'destination-out'; 
 			ctx.fillText("CATHERINE & PETER      SAN FRANCISCO      10.19.13", 0, 41);	
+			
+			// Nav Click Handler
+			$("a").click(function (event) {			
+				event.preventDefault();
+				var new_id = jQuery(this).attr("id");
+				showContent(new_id);
+	    	});
+
+			var initialScreen = "<%= @detail %>";
+			showContent(initialScreen);
 		});
 	
 		// Start the hero image rotation
@@ -67,20 +81,23 @@
 			"/assets/_10.jpg",
 		  ], {duration: 2000, fade: 750});			
 
-		// Nav Click Handlers
-		$("a").click(function () {			
-			hideHeroImage();
-			var new_id = jQuery(this).attr("id");
-			if (new_id != selected_id) {
+		function hideContent() {
+			$(".detail").addClass("hidden");
+		}
+
+		function showContent(id) {
+			if (id != null && id.length > 0 && id != _selectedId) {
+				hideHeroImage();
 				$(".detail").addClass("hidden");
-				var detail_id = "#" + new_id +"_content";
+				var detail_id = "#" + id +"_content";
 				$(detail_id).removeClass("hidden");
-			}
-    	});
+				history.pushState(null, "content page", id);
+			}			
+		}
 
 		function hideHeroImage() {
-			if (this.hero_hidden == undefined || this.hero_hidden == false) {
-				this.hero_hidden = true;
+			if (this._heroHidden == undefined || this._heroHidden == false) {
+				this._heroHidden = true;
 
 				$('#hero').animate({				
 					height: 46
@@ -90,6 +107,20 @@
 					$(".backstretch").fadeOut(100);				
 				});					
 			}			
+		}
+		
+		function showHeroImage() {
+			if (this._heroHidden == true) {
+				this._heroHidden = false;
+				$(".backstretch").fadeIn(10);
+				
+				$('#hero').animate({				
+					height: 529
+				}, 1000, function() {				
+					$("#hero").data('backstretch').resume();
+					$("#hero").css("background-color","");
+				});
+			}
 		}
 
 	</script>

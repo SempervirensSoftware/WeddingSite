@@ -1,15 +1,9 @@
 class StaticPagesController < ApplicationController
   
   def home
-    
+    detail = params[:detail]
+    @detail = detail ? detail : "" 
   end
 
-  def lodging
-
-  end
-
-  def event
-
-  end
   
 end
