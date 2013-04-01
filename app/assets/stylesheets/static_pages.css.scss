@@ -7,9 +7,15 @@
 /////////////////////////////////
 // Vars
 
-$hero_width: 		940px;
-$hero_height:		529px;
-$cut_out_height:	100px;
+$heroWidth: 		940px;
+$heroHeight:		529px;
+$cutOutHeight:		100px;
+
+$colDividerWidth:	1px;
+$colWidth2:			($heroWidth - (1 * $colDividerWidth))/2;
+$colWidth3:			($heroWidth - (2 * $colDividerWidth))/3;
+$colWidth4:			($heroWidth - (3 * $colDividerWidth))/4;
+$colWidth5:			($heroWidth - (4 * $colDividerWidth))/5;
 
 /////////////////////////////////
 // Site Syles
@@ -18,11 +24,14 @@ $cut_out_height:	100px;
 	display: none;
 }
 
-#page_wrapper{
-	width:			$hero_width;
+#pageWrapper{
+	width:			$heroWidth;
 	margin-left:	auto;
 	margin-right:	auto;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
 	height: 100%;
+	text-align: center;
 }
 
 #menu {
@@ -36,7 +45,14 @@ $cut_out_height:	100px;
 }
 
 #menu a {
-	color:#000000;
+	color:#b1b1b1;
+}
+
+.comingSoon {
+	color: #555;
+	text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size:24px;	
 }
 
 /////////////////////////////////
@@ -46,14 +62,47 @@ $cut_out_height:	100px;
     margin-top:50px;
 	overflow: hidden;
 
-	width: 	$hero_width;
-	height: $hero_height;
+	width: 	$heroWidth;
+	height: $heroHeight;
 	
 	font-family: 'Monda', sans-serif;
 	font-size:32px;	
 }
 
-.hero_cut_in{
+.heroCutIn{
 	color: #FFFFFF;
 }
 
+/////////////////////////////////
+// Content Styles
+
+table, tbody {
+	width: 100%;
+	vertical-align: top;
+	text-align: justify;
+}
+
+.column2 {
+	padding: 40px;
+	width: $colWidth2;
+}
+.column3 {
+	padding: 10px;
+	width: $colWidth3;
+}
+.column4 {
+	padding: 10px;
+	width: $colWidth4;
+}
+.column5 {
+	padding: 10px;
+	width: $colWidth5;
+	font-size: 12px;
+	text-align: left;
+}
+
+.fillColumn {
+	background-color: #000;
+	padding: 0px;
+	width: $colDividerWidth;
+}
