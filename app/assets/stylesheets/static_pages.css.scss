@@ -17,11 +17,23 @@ $colWidth3:			($heroWidth - (2 * $colDividerWidth))/3;
 $colWidth4:			($heroWidth - (3 * $colDividerWidth))/4;
 $colWidth5:			($heroWidth - (4 * $colDividerWidth))/5;
 
+$topPadding:		40px;
+
 /////////////////////////////////
 // Site Syles
 
 .hidden{
 	display: none;
+}
+
+.left{
+	text-align: left;
+}
+.right{
+	text-align: right;
+}
+.center{
+	text-align: center;
 }
 
 #pageWrapper{
@@ -40,7 +52,7 @@ $colWidth5:			($heroWidth - (4 * $colDividerWidth))/5;
     display: inline;
     text-align: center;
 
-    font-family: 'Monda', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
 	font-size:18px;	
 }
 
@@ -65,7 +77,7 @@ $colWidth5:			($heroWidth - (4 * $colDividerWidth))/5;
 	width: 	$heroWidth;
 	height: $heroHeight;
 	
-	font-family: 'Monda', sans-serif;
+	font-family: 'Noto Sans', sans-serif;
 	font-size:32px;	
 }
 
@@ -79,11 +91,12 @@ $colWidth5:			($heroWidth - (4 * $colDividerWidth))/5;
 table, tbody {
 	width: 100%;
 	vertical-align: top;
-	text-align: justify;
+	text-align: left;
+	font-size:16px;	
 }
 
 .column2 {
-	padding: 40px;
+	padding: $topPadding;
 	width: $colWidth2;
 }
 .column3 {
@@ -101,8 +114,22 @@ table, tbody {
 	text-align: left;
 }
 
+.columnImage {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 .fillColumn {
 	background-color: #000;
 	padding: 0px;
 	width: $colDividerWidth;
+}
+
+.sfContent {
+	margin-top: $topPadding;
+}
+
+.sectionTitle {
+
 }

@@ -1,6 +1,6 @@
 <div id="pageWrapper">
 	<div id="hero">
-		<canvas id="overlay" width="940" height="46"></canvas>
+		<canvas id="overlay" width="940" height="49"></canvas>
 		<div class="heroCutIn"></div>		
 	</div>
 
@@ -8,10 +8,10 @@
 	<!-- <span class="comingSoon"> More details coming soon! </span> -->
 
 	<div id="menu" class="hidden row-fluid">		
-  		<div class="span3"><a href="#event" id="event">Event</a></div>
-  		<div class="span3"><a href="#lodging" id="lodging">Lodging</a></div>
-  		<div class="span3"><a href="#party" id="party">Wedding Party</a></div>
-  		<div class="span3"><a href="#sf" id="sf">Around Town</a></div>
+  		<div class="span3"><a href="#event" class="navLink" id="event">THE BIG DAY</a></div>
+  		<div class="span3"><a href="#lodging" class="navLink" id="lodging">FOR THE OUT OF TOWNERS</a></div>
+  		<div class="span3"><a href="#party" class="navLink" id="party">RSVP</a></div>
+   		<div class="span3"><a href="#sf" class="navLink" id="sf">REGISTRIES</a></div>
 	</div> 
 
 	<div id="event_content" class="hidden detail">
@@ -54,10 +54,10 @@
 
 			// Punch out the text!
 			ctx.globalCompositeOperation = 'destination-out'; 
-			ctx.fillText("CATHERINE & PETER      SAN FRANCISCO      10.19.13", 0, 41);	
+			ctx.fillText("CATHERINE & PETER  SAN FRANCISCO  10.19.13", 0, 41);	
 			
 			// Nav Click Handler
-			$("a").click(function (event) {			
+			$(".navLink").click(function (event) {			
 				event.preventDefault();
 				var new_id = jQuery(this).attr("id");
 				showContent(new_id);
@@ -69,6 +69,7 @@
 	
 		// Start the hero image rotation
 		$("#hero").backstretch([
+			"/assets/_0.jpg",
 		    "/assets/_1.jpg",
 			"/assets/_2.jpg",
 			"/assets/_3.jpg",
@@ -79,7 +80,7 @@
 			"/assets/_8.jpg",
 			"/assets/_9.jpg",
 			"/assets/_10.jpg",
-		  ], {duration: 2000, fade: 750});			
+		  ], {duration: 2500, fade: 1200});			
 
 		function hideContent() {
 			$(".detail").addClass("hidden");
