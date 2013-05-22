@@ -40,10 +40,10 @@ $topPadding:		40px;
 	width:			$heroWidth;
 	margin-left:	auto;
 	margin-right:	auto;
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: 'Noto Serif,', Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	height: 100%;
-	text-align: center;
+	text-align: left;
 }
 
 #menu {
@@ -128,6 +128,9 @@ table, tbody {
 
 .sfContent {
 	margin-top: $topPadding;
+	font-size: 15px;
+	line-height: 20px;
+	text-align: left;
 }
 
 .sectionTitle {
