@@ -1,13 +1,39 @@
-<table>
-	<tbody>
-		<tr>
-			<td class="column2">
-				This is lots of text about the party. We will have music, dancing, and merriment. This is lots of text about the party. We will have music, dancing, and merriment. This is lots of text about the party. We will have music, dancing, and merriment. This is lots of text about the party. We will have music, dancing, and merriment. This is lots of text about the party. We will have music, dancing, and merriment. This is lots of text about the party. We will have music, dancing, and merriment. This is lots of text about the party. We will have music, dancing, and merriment. This is lots of text about the party. We will have music, dancing, and merriment.
-			</td>
-			<td class="fillColumn"></td>
-			<td class="column2">
-				This is lots of text about the party. We will have music, dancing, and merriment. This is lots of text about the party. We will have music, dancing, and merriment. This is lots of text about the party. We will have music, dancing, and merriment. This is lots of text about the party. We will have music, dancing, and merriment. This is lots of text about the party. We will have music, dancing, and merriment. This is lots of text about the party. We will have music, dancing, and merriment. This is lots of text about the party. We will have music, dancing, and merriment. This is lots of text about the party. We will have music, dancing, and merriment.
-			</td>
-		</tr>
-	</tbody>
-</table>
+<div class="rsvpContent">
+	Please RSVP individually
+	<br><br>
+	
+	<span class="radioGroup" id="attending"><input type="radio" id="yesBtn" class="radioBtn" name="attendingRadio" value="yes"/><label class="radioLabel" for="yesBtn">Count me in!</label></span>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<span class="radioGroup" style="float: right;" id="notAttending"><input type="radio" id="noBtn" class="radioBtn" name="attendingRadio" value="no"/><label class="radioLabel" for="noBtn">Count me out</label></span>
+	<br><br>
+
+	<div id="attendingContent" class="rsvpForm hidden">
+		<form class="noMargin">
+			<label>Name:</label>
+			<input type="text" placeholder="Distinguished Guest">
+			<label>Email:</label>
+			<input type="text">
+			<label>Entree Selection:</label>
+			<select>
+				<option>Mahi Mahi</option>
+				<option>Filet Medallions</option>
+				<option>Portabello Feast (veg)</option>
+			</select>
+			<label>Comments:</label>
+			<textarea rows="3"></textarea>
+			<br>
+			<button type="submit" class="btn btn-primary">RSVP</button>
+		</form>
+	</div>
+
+	<div id="notAttendingContent" class="rsvpForm hidden">
+		<form class="noMargin">
+			<label>Name:</label>
+			<input type="text">			
+			<label>Comments:</label>
+			<textarea rows="3"></textarea>
+			<br>
+			<button type="submit" class="btn btn-primary">RSVP</button>
+		</form>
+	</div>
+</div>
