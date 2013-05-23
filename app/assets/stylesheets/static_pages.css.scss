@@ -17,7 +17,8 @@ $colWidth3:			($heroWidth - (2 * $colDividerWidth))/3;
 $colWidth4:			($heroWidth - (3 * $colDividerWidth))/4;
 $colWidth5:			($heroWidth - (4 * $colDividerWidth))/5;
 
-$topPadding:		40px;
+$topPadding:		20px;
+$rsvpColor:			#006000;
 
 /////////////////////////////////
 // Site Syles
@@ -36,6 +37,14 @@ $topPadding:		40px;
 	text-align: center;
 }
 
+.noMargin{
+	margin: 0px;
+}
+
+input {
+	display: inline;
+}
+
 #pageWrapper{
 	width:			$heroWidth;
 	margin-left:	auto;
@@ -48,12 +57,12 @@ $topPadding:		40px;
 
 #menu {
     width: 100%;   
-    padding: 0px;  
-    display: inline;
+    padding: 0px;
     text-align: center;
 
     font-family: 'Noto Sans', sans-serif;
 	font-size:18px;	
+	margin-bottom: $topPadding;
 }
 
 #menu a {
@@ -95,8 +104,8 @@ table, tbody {
 	font-size:16px;	
 }
 
-.column2 {
-	padding: $topPadding;
+.column2 {	
+	padding: 10px;
 	width: $colWidth2;
 }
 .column3 {
@@ -126,13 +135,30 @@ table, tbody {
 	width: $colDividerWidth;
 }
 
+<<<<<<< HEAD
 .sfContent {
 	margin-top: $topPadding;
 	font-size: 15px;
 	line-height: 20px;
 	text-align: left;
+=======
+.radioBtn {
+	vertical-align: top;	
+>>>>>>> 184dc8addb830f3a9213314ba60df85f863ae2f7
 }
 
-.sectionTitle {
+.radioLabel {
+	display:inline;
+	margin-left: 5px;
+}
 
+.rsvpHeader{			
+	display: inline-block;
+	width: 300px;
+	font-weight: bold;
+}
+
+.rsvpContent{		
+	text-align: left;
+	padding: 15px 10px 15px 31px;		
 }

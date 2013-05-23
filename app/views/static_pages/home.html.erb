@@ -7,7 +7,7 @@
 	<br/>
 	<!-- <span class="comingSoon"> More details coming soon! </span> -->
 
-	<div id="menu" class="hidden row-fluid">		
+	<div id="menu" class="row-fluid">		
   		<div class="span3"><a href="#event" class="navLink" id="event">THE BIG DAY</a></div>
   		<div class="span3"><a href="#lodging" class="navLink" id="lodging">FOR THE OUT OF TOWNERS</a></div>
   		<div class="span3"><a href="#party" class="navLink" id="party">RSVP</a></div>
@@ -63,6 +63,11 @@
 				showContent(new_id);
 	    	});
 
+	    	$(".radioGroup").click(function (event) {							
+				var groupId = jQuery(this).attr("id");
+				expandRSVP(groupId);
+	    	});
+
 			var initialScreen = "<%= @detail %>";
 			showContent(initialScreen);
 		});
@@ -82,47 +87,7 @@
 			"/assets/_10.jpg",
 		  ], {duration: 2500, fade: 1200});			
 
-		function hideContent() {
-			$(".detail").addClass("hidden");
-		}
-
-		function showContent(id) {
-			if (id != null && id.length > 0 && id != _selectedId) {
-				hideHeroImage();
-				$(".detail").addClass("hidden");
-				var detail_id = "#" + id +"_content";
-				$(detail_id).removeClass("hidden");
-				history.pushState(null, "content page", id);
-			}			
-		}
-
-		function hideHeroImage() {
-			if (this._heroHidden == undefined || this._heroHidden == false) {
-				this._heroHidden = true;
-
-				$('#hero').animate({				
-					height: 46
-				}, 1000, function() {				
-					$("#hero").data('backstretch').pause();
-					$("#hero").css("background-color","#b1b1b1");
-					$(".backstretch").fadeOut(100);				
-				});					
-			}			
-		}
 		
-		function showHeroImage() {
-			if (this._heroHidden == true) {
-				this._heroHidden = false;
-				$(".backstretch").fadeIn(10);
-				
-				$('#hero').animate({				
-					height: 529
-				}, 1000, function() {				
-					$("#hero").data('backstretch').resume();
-					$("#hero").css("background-color","");
-				});
-			}
-		}
 
 	</script>
 
