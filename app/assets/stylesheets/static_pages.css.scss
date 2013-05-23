@@ -129,8 +129,7 @@ table, tbody {
 	margin-bottom: 10px;
 }
 
-.fillColumn {
-	background-color: #000;
+.fillColumn {		
 	padding: 0px;
 	width: $colDividerWidth;
 }
@@ -153,4 +152,8 @@ table, tbody {
 .rsvpContent{		
 	text-align: left;
 	padding: 15px 10px 15px 31px;		
+}
+
+.lodgingContent {
+	text-align: left;
 }
