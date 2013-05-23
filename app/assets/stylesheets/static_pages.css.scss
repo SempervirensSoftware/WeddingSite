@@ -135,16 +135,8 @@ table, tbody {
 	width: $colDividerWidth;
 }
 
-<<<<<<< HEAD
-.sfContent {
-	margin-top: $topPadding;
-	font-size: 15px;
-	line-height: 20px;
-	text-align: left;
-=======
 .radioBtn {
-	vertical-align: top;	
->>>>>>> 184dc8addb830f3a9213314ba60df85f863ae2f7
+	vertical-align: top;
 }
 
 .radioLabel {
@@ -161,4 +153,8 @@ table, tbody {
 .rsvpContent{		
 	text-align: left;
 	padding: 15px 10px 15px 31px;		
+}
+
+.lodgingContent {
+	text-align: left;
 }
