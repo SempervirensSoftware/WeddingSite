@@ -21,6 +21,7 @@ end
 
 group :development do
   gem 'sqlite3'
+  gem 'annotate'
 end
 
 group :production do

@@ -1,0 +1,99 @@
+
+
+<div class="rsvpContent">
+	Please RSVP individually
+	<br><br>
+	
+	<span class="radioGroup" id="attending"><input type="radio" id="yesBtn" class="radioBtn" name="attendingRadio" value="yes"/><label class="radioLabel" for="yesBtn">Count me in!</label></span>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<span class="radioGroup" style="float: right;" id="notAttending"><input type="radio" id="noBtn" class="radioBtn" name="attendingRadio" value="no"/><label class="radioLabel" for="noBtn">Count me out</label></span>
+	<br><br>
+
+	<div id="attendingContent" class="rsvpForm hidden">
+		<form class="noMargin">
+			<label>Name:</label>
+			<input id="attendingName" type="text" placeholder="Distinguished Guest">
+			<label>Email:</label>
+			<input id="attendingEmail" type="text">
+			<label>Entree Selection:</label>
+			<select id="attendingMeal">
+				<option>Mahi Mahi</option>
+				<option>Filet Medallions</option>
+				<option>Portabello Feast (veg)</option>
+			</select>
+			<label>Comments:</label>
+			<textarea id="attendingComments" rows="3"></textarea>
+			<br>
+			<button id="attendingBtn" type="submit" class="btn btn-primary rsvpBtn">RSVP</button>
+		</form>
+	</div>
+
+	<div id="notAttendingContent" class="rsvpForm hidden">
+		<form class="noMargin">
+			<label>Name:</label>
+			<input id="regretsName" type="text">			
+			<label>Comments:</label>
+			<textarea id="regretsComments" rows="3"></textarea>
+			<br>
+			<button id="regretsBtn" type="submit" class="btn btn-primary rsvpBtn">Send Regrets</button>
+		</form>
+	</div>
+</div>
+
+<script>
+	_isAttending = false;
+
+	$(".radioGroup").click(function (event) {							
+		var groupId = jQuery(this).attr("id");
+		expandRSVP(groupId);
+	});
+
+	$(".rsvpBtn").click(function (event) {							
+		event.preventDefault();
+		submitRSVP();
+	});
+
+	function submitRSVP(){
+		var values = {isAttending: _isAttending};		
+		
+		if (_isAttending) {
+			getField("#attendingName", values, "name");
+			getField("#attendingEmail", values, "email");
+			getField("#attendingMeal", values, "dinner");
+			getField("#attendingComments", values, "comments");	
+		} else {
+			getField("#regretsName", values, "name");
+			getField("#regretsComments", values, "comments");	
+		}
+
+		var reg = {registration: values};
+		var url = "/register";
+		var jqxhr = $.post( url, reg )
+			.done(function(data) { 	
+				alert(data.name);
+			});  
+	}
+
+	function getField(inputFieldId, object, key){
+		var value = $(inputFieldId).val();
+		if (value != null && value.length > 0) {
+			object[key] = value;
+		}
+	}
+
+	function expandRSVP(expandId){	
+		var contentElement = $("#"+expandId+"Content");
+		var otherElement = null;
+		if (expandId === 'attending'){
+			_isAttending = true;
+			otherElement = $("#notAttendingContent");
+		} else {
+			_isAttending = false;
+			otherElement = $("#attendingContent");
+		}
+
+		otherElement.addClass("hidden");
+		contentElement.removeClass("hidden");
+	}	
+
+</script>

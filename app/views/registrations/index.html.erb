@@ -1,0 +1,34 @@
+<br/>
+<h2>Attending</h2>
+<table>
+	<tr>
+		<th>Name</th> 
+		<th>Email</th> 
+		<th>Meal</th> 
+		<th>Comments</th> 
+	</tr>
+	<% @registrations.select{ |reg| reg.isAttending == true }.each do |registration| %>
+		
+		<tr>			
+			<td><%= registration.name %></td>
+			<td><%= registration.email %></td>
+			<td><%= registration.dinner %></td>
+			<td><%= registration.comments %></td>
+		</tr>
+	<% end %>
+</table>
+<br/><br/>
+<h2>Not Attending</h2>
+<table>
+	<tr>	
+		<th>Name</th> 		
+		<th>Comments</th> 
+	</tr>
+	<% @registrations.select{ |reg| reg.isAttending == false }.each do |registration| %>
+		
+		<tr>			
+			<td><%= registration.name %></td>			
+			<td><%= registration.comments %></td>
+		</tr>
+	<% end %>
+</table>

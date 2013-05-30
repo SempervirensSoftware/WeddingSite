@@ -10,8 +10,8 @@
 	<div id="menu" class="row-fluid">		
   		<div class="span3"><a href="#event" class="navLink" id="event">THE BIG DAY</a></div>
   		<div class="span3"><a href="#lodging" class="navLink" id="lodging">FOR THE OUT OF TOWNERS</a></div>
-  		<div class="span3"><a href="#party" class="navLink" id="party">RSVP</a></div>
-   		<div class="span3"><a href="#sf" class="navLink" id="sf">REGISTRIES</a></div>
+  		<div class="span3"><a href="#rsvp" class="navLink" id="rsvp">RSVP</a></div>
+   		<div class="span3"><a href="#registry" class="navLink" id="registry">REGISTRIES</a></div>
 	</div> 
 
 	<div id="event_content" class="hidden detail">
@@ -20,11 +20,11 @@
 	<div id="lodging_content" class="hidden detail">
 		<%= render "lodging" %>
 	</div>
-	<div id="party_content" class="hidden detail">
-		<%= render "party" %>
+	<div id="rsvp_content" class="hidden detail">
+		<%= render "rsvp" %>
 	</div>
-	<div id="sf_content" class="hidden detail">
-		<%= render "sf" %>
+	<div id="registry_content" class="hidden detail">
+		<%= render "registry" %>
 	</div>
 
 	<div style="font-family: Monda;">&nbsp;</div>
@@ -61,12 +61,7 @@
 				event.preventDefault();
 				var new_id = jQuery(this).attr("id");
 				showContent(new_id);
-	    	});
-
-	    	$(".radioGroup").click(function (event) {							
-				var groupId = jQuery(this).attr("id");
-				expandRSVP(groupId);
-	    	});
+	    	});	    	
 
 			var initialScreen = "<%= @detail %>";
 			showContent(initialScreen);
@@ -86,9 +81,6 @@
 			"/assets/_9.jpg",
 			"/assets/_10.jpg",
 		  ], {duration: 2500, fade: 1200});			
-
-		
-
 	</script>
 
 </div>

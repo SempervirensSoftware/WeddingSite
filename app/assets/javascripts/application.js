@@ -57,45 +57,6 @@ function showHeroImage() {
 	}
 }
 
-function expandRSVP(expandId){	
-	var contentElement = $("#"+expandId+"Content");
-	var otherElement = null;
-	if (expandId === 'attending'){
-		otherElement = $("#notAttendingContent");
-	} else {
-		otherElement = $("#attendingContent");
-	}
-
-	otherElement.addClass("hidden");
-	contentElement.removeClass("hidden");
-
-	// $("#"+expandId+"Content");
-	// contentElement.removeClass("hidden");
-
-	// var currentHeight = element.height();
-	// var heightDelta = getHiddenElementHeight(contentElement)+60;
-	// console.log(heightDelta);
-
-	
-	
-}
-
-function collapseRSVP(collaspseId){	
-	var element = $("#"+collaspseId);
-	var contentElement = $("#"+collaspseId+"Content");
-
-	if (!contentElement.hasClass("hidden")) {
-		var currentHeight = element.height();
-		var heightDelta = contentElement.height();
-
-		contentElement.addClass("hidden");
-		element.animate({				
-			height: (currentHeight - heightDelta)
-		}, 300, function() {});	
-	}
-	
-}
-
 function getHiddenElementHeight(element){
 	var height = 0;
 	
