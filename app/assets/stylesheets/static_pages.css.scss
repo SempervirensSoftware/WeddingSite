@@ -41,8 +41,20 @@ $rsvpColor:			#006000;
 	margin: 0px;
 }
 
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
 input {
 	display: inline;
+}
+
+.doubleTopMargin {
+	margin-top: 20px;
 }
 
 #pageWrapper{
@@ -135,9 +147,8 @@ table, tbody {
 	width: $colDividerWidth;
 }
 
-
 .tableContent {
-	margin: 10px 0px 10px 0px;
+	margin: 20px 0px 20px 0px;
 }
 
 .radioBtn {
@@ -158,6 +169,10 @@ table, tbody {
 .rsvpContent{		
 	text-align: left;
 	padding: 15px 10px 15px 31px;		
+}
+
+.rsvpSelection {
+	text-align: center;
 }
 
 .lodgingContent {
