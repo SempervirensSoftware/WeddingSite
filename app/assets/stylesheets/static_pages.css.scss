@@ -45,6 +45,10 @@ input {
 	display: inline;
 }
 
+.doubleTopMargin {
+	margin-top: 20px;
+}
+
 #pageWrapper{
 	width:			$heroWidth;
 	margin-left:	auto;
@@ -135,9 +139,8 @@ table, tbody {
 	width: $colDividerWidth;
 }
 
-
 .tableContent {
-	margin: 10px 0px 10px 0px;
+	margin: 20px 0px 20px 0px;
 }
 
 .radioBtn {
