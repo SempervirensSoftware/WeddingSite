@@ -41,6 +41,14 @@ $rsvpColor:			#006000;
 	margin: 0px;
 }
 
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
 input {
 	display: inline;
 }
@@ -161,6 +169,10 @@ table, tbody {
 .rsvpContent{		
 	text-align: left;
 	padding: 15px 10px 15px 31px;		
+}
+
+.rsvpSelection {
+	text-align: center;
 }
 
 .lodgingContent {

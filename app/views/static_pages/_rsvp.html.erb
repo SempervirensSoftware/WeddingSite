@@ -4,10 +4,11 @@
 	Please RSVP individually
 	<br><br>
 	
-	<span class="radioGroup" id="attending"><input type="radio" id="yesBtn" class="radioBtn" name="attendingRadio" value="yes"/><label class="radioLabel" for="yesBtn">Count me in!</label></span>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<span class="radioGroup" style="float: right;" id="notAttending"><input type="radio" id="noBtn" class="radioBtn" name="attendingRadio" value="no"/><label class="radioLabel" for="noBtn">Count me out</label></span>
-	<br><br>
+	<div>
+    	<a id="attending" class="btn btn-large rsvpSelection" href="#" ><i id="attendingBox" style="text-align:left" class="icon-fixed-width icon-check-empty icon-large"></i> Count me in!</a>
+    	<a id="notAttending" class="btn btn-large rsvpSelection" href="#" ><i  id="notAttendingBox" style="text-align:left" class="icon-fixed-width icon-check-empty icon-large"></i> Count me out</a>
+    </div>
+    <br/><br/>
 
 	<div id="attendingContent" class="rsvpForm hidden">
 		<form class="noMargin">
@@ -24,7 +25,7 @@
 			<label>Comments:</label>
 			<textarea id="attendingComments" rows="3"></textarea>
 			<br>
-			<button id="attendingBtn" type="submit" class="btn btn-primary rsvpBtn">RSVP</button>
+			<button id="attendingBtn" type="submit" class="btn btn-primary rsvpSubmit">RSVP</button>
 		</form>
 	</div>
 
@@ -35,20 +36,56 @@
 			<label>Comments:</label>
 			<textarea id="regretsComments" rows="3"></textarea>
 			<br>
-			<button id="regretsBtn" type="submit" class="btn btn-primary rsvpBtn">Send Regrets</button>
+			<button id="regretsBtn" type="submit" class="btn btn-primary rsvpSubmit">Send Regrets</button>
 		</form>
 	</div>
 </div>
 
 <script>
 	_isAttending = false;
+	_selectionId = null;
 
-	$(".radioGroup").click(function (event) {							
-		var groupId = jQuery(this).attr("id");
-		expandRSVP(groupId);
-	});
+	$(".rsvpSelection").click(function (event) {							
+		event.preventDefault();
+		var selectionId = jQuery(this).attr("id");
+		_selectionId = selectionId;		
+		expandRSVP(selectionId);
+	});	
 
-	$(".rsvpBtn").click(function (event) {							
+	$(".rsvpSelection").hover(
+		function (event) { // mouseOver
+			var buttonId = jQuery(this).attr("id");
+			if (_selectionId !== buttonId) {
+				var button = $("#"+buttonId);
+				if (buttonId === "attending") {
+					button.addClass("btn-success");
+				} else {
+					button.addClass("btn-danger");
+				}
+
+				var box = $("#"+buttonId+"Box");
+				box.addClass("icon-check");
+				box.removeClass("icon-check-empty");
+			}
+		},
+		function (event) { // mouseOut
+			var buttonId = jQuery(this).attr("id");
+			if (_selectionId !== buttonId) {
+				var button = $("#"+buttonId);
+				if (buttonId === "attending") {
+					button.removeClass("btn-success");
+				} else {
+					button.removeClass("btn-danger");
+				}
+
+				var box = $("#"+buttonId+"Box");
+				box.addClass("icon-check-empty");
+				box.removeClass("icon-check");
+			}			
+		}
+	);	
+
+	$(".rsvpSubmit").click(function (event) {							
 		event.preventDefault();
 		submitRSVP();
 	});
@@ -82,18 +119,40 @@
 	}
 
 	function expandRSVP(expandId){	
+		var defaultBtnStyle = "btn-warning";
+
+		var btnElement = $("#"+expandId);
 		var contentElement = $("#"+expandId+"Content");
-		var otherElement = null;
+		var boxElement = $("#"+expandId+"Box");
+
+		var otherId = null;		
 		if (expandId === 'attending'){
 			_isAttending = true;
-			otherElement = $("#notAttendingContent");
+			otherId = "notAttending";
+
+			btnElement.addClass("btn-success");
+			btnElement.removeClass(defaultBtnStyle);
+
+			$("#"+otherId).removeClass("btn-danger");
 		} else {
 			_isAttending = false;
-			otherElement = $("#attendingContent");
-		}
+			otherId = "attending";			
 
-		otherElement.addClass("hidden");
+			btnElement.addClass("btn-danger");
+			btnElement.removeClass(defaultBtnStyle);
+
+			$("#"+otherId).removeClass("btn-success");
+		}
+		
+		var otherContent = $("#"+otherId+"Content");
+		var otherBox = $("#"+otherId+"Box")
+
+		otherContent.addClass("hidden");
 		contentElement.removeClass("hidden");
+
+		boxElement.addClass("icon-check");
+		otherBox.addClass("icon-check-empty");
+		otherBox.removeClass("icon-check");
 	}	
 
 </script>
