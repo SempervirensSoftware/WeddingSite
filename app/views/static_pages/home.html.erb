@@ -7,11 +7,11 @@
 	<br/>
 	<!-- <span class="comingSoon"> More details coming soon! </span> -->
 
-	<div id="menu" class="row-fluid">		
-  		<div class="span3"><a href="#event" class="navLink" id="event">THE BIG DAY</a></div>
-  		<div class="span3"><a href="#lodging" class="navLink" id="lodging">FOR THE OUT OF TOWNERS</a></div>
-  		<div class="span3"><a href="#rsvp" class="navLink" id="rsvp">RSVP</a></div>
-   		<div class="span3"><a href="#registry" class="navLink" id="registry">REGISTRIES</a></div>
+	<div id="menu" class="row-fluid" style="text-align:right;">		
+  		<div class="span3 left"><a href="#event" class="navLink" id="event">THE BIG DAY</a></div>
+  		<div class="span3 center"><a href="#lodging" class="navLink" id="lodging">OUT OF TOWNERS</a></div>
+  		<div class="span3 center"><a href="#rsvp" class="navLink" id="rsvp">RSVP</a></div>
+   		<div class="span3 right"><a href="#registry" class="navLink" id="registry">REGISTRIES</a></div>
 	</div> 
 
 	<div id="event_content" class="hidden detail">
@@ -30,6 +30,10 @@
 	<div style="font-family: Monda;">&nbsp;</div>
 
 	<script type="text/javascript">
+		var _HEADER_WIDTH = 940;
+		var _HEADER_HEIGHT = 46;
+		var _HEADER_TEXT_Y_OFFSET = 42;
+
 		var _heroHidden = false;
 		var _selectedId = null;
 
@@ -50,11 +54,36 @@
 
 			// Draw the black rectangle
 			ctx.fillStyle = "white";
-			ctx.fillRect(0,0,940,46);
+			ctx.fillRect(0,0,_HEADER_WIDTH,_HEADER_HEIGHT);
 
 			// Punch out the text!
 			ctx.globalCompositeOperation = 'destination-out'; 
-			ctx.fillText("CATHERINE & PETER  SAN FRANCISCO  10.19.13", 0, 41);	
+
+			var header = {
+				left: {
+					text: "Catherine & Peter",
+					x: 0,
+				}, middle: {
+					text: "San Francisco",
+				}, right: {
+					text: "10.19.13",
+				}
+			};
+
+			// measure the text width						
+			header.left.width = ctx.measureText(header.left.text).width;
+			header.middle.width = ctx.measureText(header.middle.text).width;
+			header.right.width = ctx.measureText(header.right.text).width;
+
+			// figure out wher it all goes
+			header.right.x =  (_HEADER_WIDTH - header.right.width);
+			var middleSpace = header.right.x - header.left.width;
+			var middlePadding = middleSpace - header.middle.width;
+			header.middle.x = header.left.width + Math.floor(middlePadding/2);
+
+			ctx.fillText(header.left.text, header.left.x, _HEADER_TEXT_Y_OFFSET);
+			ctx.fillText(header.middle.text, header.middle.x, _HEADER_TEXT_Y_OFFSET);
+			ctx.fillText(header.right.text, header.right.x, _HEADER_TEXT_Y_OFFSET);
 			
 			// Nav Click Handler
 			$(".navLink").click(function (event) {			

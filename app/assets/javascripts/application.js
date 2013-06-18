@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 
+var _HIDDEN_IMAGE_Y_OFFSET = 45;
 
 function hideContent() {
 	$(".detail").addClass("hidden");
@@ -34,7 +35,7 @@ function hideHeroImage() {
 		this._heroHidden = true;
 
 		$('#hero').animate({				
-			height: 46
+			height: _HIDDEN_IMAGE_Y_OFFSET
 		}, 1000, function() {				
 			$("#hero").data('backstretch').pause();
 			$("#hero").css("background-color","#b1b1b1");
