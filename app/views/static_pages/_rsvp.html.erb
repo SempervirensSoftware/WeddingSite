@@ -1,14 +1,19 @@
 <div class="rsvpContent">
 	
 	<div id="instructions" class="rsvpInstruction">
-		Please RSVP individually.
-	</div>	
+		Please RSVP each guest individually. Due to the capacity of our venues, we regret that we are unable to extend plus ones.
+	</div>
+	<div id="submitted" class="rsvpInstruction hidden">
+		<span id="result"></span>
+		<br /><br />
+		<button id="refresh" class="btn btn-info">Add Another RSVP</button>
+	</div>
 	<br/>
-	<div>
+	<div id="actionButtons">
     	<a id="attending" class="btn btn-large rsvpSelection" href="#" ><i id="attendingBox" style="text-align:left" class="icon-fixed-width icon-check-empty icon-large"></i> Count me in!</a>
     	<a id="notAttending" class="btn btn-large rsvpSelection" href="#" ><i  id="notAttendingBox" style="text-align:left" class="icon-fixed-width icon-check-empty icon-large"></i> Count me out</a>
     </div>
-    <br/><br/>
+    <br/>
 
 	<div id="attendingContent" class="rsvpForm hidden">
 		<form class="noMargin">
@@ -51,6 +56,12 @@
 		_selectionId = selectionId;		
 		expandRSVP(selectionId);
 	});	
+
+	$('#refresh').click(function(){
+		$('#submitted').addClass('hidden');
+		$('#actionButtons').removeClass('hidden');
+		$('#instructions').removeClass('hidden');
+	});
 
 	$(".rsvpSelection").hover(
 		function (event) { // mouseOver
@@ -109,10 +120,12 @@
 		var jqxhr = $.post( url, reg )
 			.done(function(data) { 	
 				clearRSVP();
+
+				$('#submitted').removeClass('hidden');
 				if (attending) {
-					$('#instructions').text("Awesome! We can't wait to celebrate with you.");
+					$('#result').text("Awesome! We can't wait to celebrate with you.");
 				} else {
-					$('#instructions').text("We're sorry you can't make it. We can't wait to see you again soon.");
+					$('#result').text("We're sorry you can't make it. We hope to celebrate with you sometime soon.");
 				}
 			});  
 	}
@@ -165,16 +178,20 @@
 		_selectionId = null;
 		_isAttending = false;
 
-		$('.rsvpInput').val('');
-		$('#attendingMeal').val('Fish');
 		$('.rsvpForm').addClass('hidden');
-
+		$('#actionButtons').addClass('hidden');
+		$('#instructions').addClass('hidden');
+		
+		$('.rsvpInput').val('');
+		$('#attendingMeal').val('Fish');		
 		
 		$('.rsvpSelection').removeClass('btn-success');
 		$('.rsvpSelection').removeClass('btn-danger');
 
 		$('.icon-large').removeClass('icon-check');
 		$('.icon-large').addClass("icon-check-empty");
+
+
 	}
 
 </script>
