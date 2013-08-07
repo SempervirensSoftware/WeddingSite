@@ -1,7 +1,9 @@
 <div class="rsvpContent">
-	Please RSVP individually
-	<br><br>
 	
+	<div id="instructions" class="rsvpInstruction">
+		Please RSVP individually.
+	</div>	
+	<br/>
 	<div>
     	<a id="attending" class="btn btn-large rsvpSelection" href="#" ><i id="attendingBox" style="text-align:left" class="icon-fixed-width icon-check-empty icon-large"></i> Count me in!</a>
     	<a id="notAttending" class="btn btn-large rsvpSelection" href="#" ><i  id="notAttendingBox" style="text-align:left" class="icon-fixed-width icon-check-empty icon-large"></i> Count me out</a>
@@ -11,9 +13,9 @@
 	<div id="attendingContent" class="rsvpForm hidden">
 		<form class="noMargin">
 			<label>Name:</label>
-			<input id="attendingName" type="text" placeholder="Distinguished Guest">
+			<input id="attendingName" class="rsvpInput" type="text" placeholder="Distinguished Guest">
 			<label>Email:</label>
-			<input id="attendingEmail" type="text">
+			<input id="attendingEmail" class="rsvpInput" type="text">
 			<label>Entree Selection:</label>
 			<select id="attendingMeal">
 				<option>Fish</option>
@@ -21,7 +23,7 @@
 				<option>Vegetarian</option>
 			</select>
 			<label>Comments:</label>
-			<textarea id="attendingComments" rows="3"></textarea>
+			<textarea id="attendingComments" class="rsvpInput" rows="3"></textarea>
 			<br>
 			<button id="attendingBtn" type="submit" class="btn btn-info rsvpSubmit">RSVP</button>
 		</form>
@@ -30,9 +32,9 @@
 	<div id="notAttendingContent" class="rsvpForm hidden">
 		<form class="noMargin">
 			<label>Name:</label>
-			<input id="regretsName" type="text">			
+			<input id="regretsName" class="rsvpInput" type="text">			
 			<label>Comments:</label>
-			<textarea id="regretsComments" rows="3"></textarea>
+			<textarea id="regretsComments" class="rsvpInput" rows="3"></textarea>
 			<br>
 			<button id="regretsBtn" type="submit" class="btn btn-info rsvpSubmit">Send Regrets</button>
 		</form>
@@ -89,9 +91,10 @@
 	});
 
 	function submitRSVP(){
-		var values = {isAttending: _isAttending};		
+		var attending = _isAttending;
+		var values = {isAttending: attending};		
 		
-		if (_isAttending) {
+		if (attending) {
 			getField("#attendingName", values, "name");
 			getField("#attendingEmail", values, "email");
 			getField("#attendingMeal", values, "dinner");
@@ -105,7 +108,12 @@
 		var url = "/register";
 		var jqxhr = $.post( url, reg )
 			.done(function(data) { 	
-				alert(data.name);
+				clearRSVP();
+				if (attending) {
+					$('#instructions').text("Awesome! We can't wait to celebrate with you.");
+				} else {
+					$('#instructions').text("We're sorry you can't make it. We can't wait to see you again soon.");
+				}
 			});  
 	}
 
@@ -151,6 +159,22 @@
 		boxElement.addClass("icon-check");
 		otherBox.addClass("icon-check-empty");
 		otherBox.removeClass("icon-check");
-	}	
+	}
+
+	function clearRSVP() {
+		_selectionId = null;
+		_isAttending = false;
+
+		$('.rsvpInput').val('');
+		$('#attendingMeal').val('Fish');
+		$('.rsvpForm').addClass('hidden');
+
+		
+		$('.rsvpSelection').removeClass('btn-success');
+		$('.rsvpSelection').removeClass('btn-danger');
+
+		$('.icon-large').removeClass('icon-check');
+		$('.icon-large').addClass("icon-check-empty");
+	}
 
 </script>

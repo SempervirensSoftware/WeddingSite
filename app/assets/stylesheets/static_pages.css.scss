@@ -116,25 +116,6 @@ table, tbody {
 	font-size:16px;	
 }
 
-.column2 {	
-	padding: 10px;
-	width: $colWidth2;
-}
-.column3 {
-	padding: 10px;
-	width: $colWidth3;
-}
-.column4 {
-	padding: 10px;
-	width: $colWidth4;
-}
-.column5 {
-	padding: 10px;
-	width: $colWidth5;
-	font-size: 12px;
-	text-align: left;
-}
-
 .columnImage {
 	text-align: center;
 	margin-top: 10px;
@@ -168,6 +149,18 @@ table, tbody {
 
 .rsvpContent{		
 	text-align: left;	
+}
+
+.rsvpInput {
+	width:210px;
+}
+
+#attendingComments {
+	width: 195px;
+}
+
+.rsvpInstruction {
+	font-size: 16px;
 }
 
 .rsvpSelection {
