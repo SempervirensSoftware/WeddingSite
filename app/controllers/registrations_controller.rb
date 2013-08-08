@@ -16,6 +16,8 @@ class RegistrationsController < ApplicationController
 
 	def index
 		@registrations = Registration.all
+		@attending = @registrations.select{ |reg| reg.isAttending == true }
+		@not_attending = @registrations.select{ |reg| reg.isAttending == false }
 	end
 
 end

@@ -1,4 +1,9 @@
-<br/>
+<div class="well">
+	<div class="summary">Responses: <%= @registrations.count %></div>
+	<div class="summary">Attending: <%= @attending.count %></div>
+	<div class="summary">Not Attending: <%= @not_attending.count %></div>
+</div>
+
 <h2>Attending</h2>
 <table>
 	<tr>
@@ -7,8 +12,7 @@
 		<th>Meal</th> 
 		<th>Comments</th> 
 	</tr>
-	<% @registrations.select{ |reg| reg.isAttending == true }.each do |registration| %>
-		
+	<% @attending.each do |registration| %>		
 		<tr>			
 			<td><%= registration.name %></td>
 			<td><%= registration.email %></td>
@@ -24,7 +28,7 @@
 		<th>Name</th> 		
 		<th>Comments</th> 
 	</tr>
-	<% @registrations.select{ |reg| reg.isAttending == false }.each do |registration| %>
+	<% @not_attending.each do |registration| %>
 		
 		<tr>			
 			<td><%= registration.name %></td>			
