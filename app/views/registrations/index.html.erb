@@ -5,15 +5,17 @@
 </div>
 
 <h2>Attending</h2>
-<table>
+<table class="table table-striped">
 	<tr>
+		<th>Id</th>
 		<th>Name</th> 
 		<th>Email</th> 
 		<th>Meal</th> 
 		<th>Comments</th> 
 	</tr>
 	<% @attending.each do |registration| %>		
-		<tr>			
+		<tr>
+			<td><%= registration.id %></td>
 			<td><%= registration.name %></td>
 			<td><%= registration.email %></td>
 			<td><%= registration.dinner %></td>
@@ -23,14 +25,15 @@
 </table>
 <br/><br/>
 <h2>Not Attending</h2>
-<table>
+<table class="table table-striped">
 	<tr>	
-		<th>Name</th> 		
+		<th>Id</th>
+		<th>Name</th>
 		<th>Comments</th> 
 	</tr>
 	<% @not_attending.each do |registration| %>
-		
 		<tr>			
+			<td><%= registration.id %></td>
 			<td><%= registration.name %></td>			
 			<td><%= registration.comments %></td>
 		</tr>
